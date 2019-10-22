@@ -1,0 +1,265 @@
+﻿@using static General.Entities.LibrarySeat
+@using System.Numerics;
+@{
+    ViewData["Title"] = "FirstFloor";
+    IList<General.Entities.LibrarySeat> librarySeats = ViewBag.LibrarySeats;
+    List<Vector2> seatPosition = ViewBag.SeatPosition;
+    var workContext = Html.GetWorkContext();
+    var seatService = Html.GetLibrarySeatService();
+    int hasUser = (workContext.CurrentUser != null) ? 1 : 0;
+}
+<link rel="stylesheet" href="~/css/Snnu/unifloorplan.css" />
+<script type="text/javascript" src="~/js/Snnu/unifloorplan.js"></script>
+<div class="space-32"></div>"
+<div class="main-content">
+    <div class="row">
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-8">
+            <div class="fp-user fp-user-con center" style="position:relative; height:522px;width:928px">
+                <img src="~/images/负一楼.jpg" style="width:100%;height:100%" />
+                @if (seatPosition != null)
+                {
+                    int i = 1;
+                    @foreach (var position in seatPosition)
+                    {
+                        General.Entities.LibrarySeat seat = librarySeats.Where(s=>s.SeatNumber == i).First();
+                        string top = position.X + "px";
+                        string left = position.Y + "px";
+                        @if (seat != null)
+                        {
+                            @if (seat.SeatState == SeatStates.Available)
+                            {
+                                <div class="fp-dot fp-dot-ok" key="@i" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:@top;left:@left;" data-original-title="负一层-@i" data-toggle="tooltip" data-placement="top">
+
+                                </div>
+                            }
+                            else if (seat.SeatState == SeatStates.Booked)
+                            {
+                                <div class="fp-dot fp-dot-busy" key="@i" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:@top;left:@left;" data-original-title="负一层-@i" data-toggle="tooltip" data-placement="top">
+
+                                </div>
+                            }
+                            else if (seat.SeatState == SeatStates.InAvailable)
+                            {
+                                <div class="fp-dot fp-dot-seat" key="@i" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:@top;left:@left;" data-original-title="负一层-@i" data-toggle="tooltip" data-placement="top">
+
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="fp-dot fp-dot-close" key="@i" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:@top;left:@left;" data-original-title="负一层-@i" data-toggle="tooltip" data-placement="top">
+
+                            </div>
+                        }
+                        i++;
+
+
+
+                    }
+                }
+
+
+
+                @*<div>
+                @if (seatService.GetBySeatNum(001) != null)
+                {
+                    @if (seatService.GetBySeatNum(001).SeatState == SeatStates.Available)
+                    {
+                        <div class="fp-dot fp-dot-ok" key="001" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:76px;left:184px;" data-original-title="负一层-001"
+                             data-toggle="tooltip" data-placement="top">
+
+                        </div>
+                    }
+                    else if (seatService.GetBySeatNum(001).SeatState == SeatStates.Booked)
+                    {
+                        <div class="fp-dot fp-dot-busy" key="001" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:76px;left:184px;" data-original-title="负一层-001"
+                             data-toggle="tooltip" data-placement="top">
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="fp-dot fp-dot-ing" key="001" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:76px;left:184px;" data-original-title="负一层-001"
+                             data-toggle="tooltip" data-placement="top">
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="fp-dot fp-dot-close" key="001" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:76px;left:184px;" data-original-title="负一层-001"
+                         data-toggle="tooltip" data-placement="top">
+
+                    </div>
+                }
+            </div>
+            <div>
+                @if (seatService.GetBySeatNum(002) != null)
+                {
+                    @if (seatService.GetBySeatNum(002).SeatState == SeatStates.Available)
+                    {
+                        <div class="fp-dot fp-dot-ok" key="002" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:75px;left:236px;" data-original-title="负一层-002" data-toggle="tooltip" data-placement="top">
+
+                        </div>
+                    }
+                    else if (seatService.GetBySeatNum(002).SeatState == SeatStates.Booked)
+                    {
+                        <div class="fp-dot fp-dot-ok" key="002" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:75px;left:236px;" data-original-title="负一层-002" data-toggle="tooltip" data-placement="top">
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="fp-dot fp-dot-ok" key="002" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:75px;left:236px;" data-original-title="负一层-002" data-toggle="tooltip" data-placement="top">
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="fp-dot fp-dot-close" key="002" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:75px;left:184px;" data-original-title="负一层-002"
+                         data-toggle="tooltip" data-placement="top">
+
+                    </div>
+                }
+            </div>*@
+
+
+                @*<div class="fp-dot fp-dot-ok" key="003" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:101px;left:184px;" data-original-title="负一层-003"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492775" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:100px;left:236px;" data-original-title="负一层-004"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492776" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:122px;left:184px;" data-original-title="负一层-005"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492777" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:122px;left:236px;" data-original-title="负一层-006"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-busy" key="100492778" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:150px;left:184px;" data-original-title="负一层-007"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-busy" key="100492779" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:150px;left:236px;" data-original-title="负一层-008"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492780" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:170px;left:184px;" data-original-title="负一层-009"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492781" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:170px;left:236px;" data-original-title="负一层-010"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492782" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:197px;left:184px;" data-original-title="负一层-011"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492783" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:197px;left:236px;" data-original-title="负一层-012"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492784" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:217px;left:184px;" data-original-title="负一层-013"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492785" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:217px;left:236px;" data-original-title="负一层-014"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492786" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:244px;left:184px;" data-original-title="负一层-015"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492787" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:244px;left:236px;" data-original-title="负一层-016"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492788" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:265px;left:184px;" data-original-title="负一层-017"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492789" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:265px;left:236px;" data-original-title="负一层-018"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492790" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:291px;left:184px;" data-original-title="负一层-019"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492791" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:291px;left:236px;" data-original-title="负一层-020"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492792" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:311px;left:184px;" data-original-title="负一层-021"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492793" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:311px;left:236px;" data-original-title="负一层-022"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492794" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:338px;left:184px;" data-original-title="负一层-023"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492795" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:338px;left:236px;" data-original-title="负一层-024"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492796" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:358px;left:184px;" data-original-title="负一层-025"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492797" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:358px;left:236px;" data-original-title="负一层-026"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492798" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:385px;left:184px;" data-original-title="负一层-027"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492799" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:385px;left:236px;" data-original-title="负一层-028"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492800" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:406px;left:184px;" data-original-title="负一层-029"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492801" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:406px;left:236px;" data-original-title="负一层-030"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492802" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:433px;left:184px;" data-original-title="负一层-031"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492803" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:433px;left:236px;" data-original-title="负一层-032"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492804" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:453px;left:184px;" data-original-title="负一层-033"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492805" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:453px;left:236px;" data-original-title="负一层-034"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492806" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:479px;left:184px;" data-original-title="负一层-035"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492807" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:479px;left:236px;" data-original-title="负一层-036"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492808" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:75px;left:474px;" data-original-title="负一层-037"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492809" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:75px;left:526px;" data-original-title="负一层-038"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492810" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:103px;left:474px;" data-original-title="负一层-039"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492811" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:103px;left:526px;" data-original-title="负一层-040"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492812" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:122px;left:474px;" data-original-title="负一层-041"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492813" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:122px;left:526px;" data-original-title="负一层-042"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492814" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:150px;left:474px;" data-original-title="负一层-043"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492815" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:150px;left:526px;" data-original-title="负一层-044"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492816" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:170px;left:474px;" data-original-title="负一层-045"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492817" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:170px;left:526px;" data-original-title="负一层-046"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492818" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:197px;left:474px;" data-original-title="负一层-047"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492819" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:197px;left:526px;" data-original-title="负一层-048"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492820" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:217px;left:474px;" data-original-title="负一层-049"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492821" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:217px;left:526px;" data-original-title="负一层-050"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492822" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:244px;left:474px;" data-original-title="负一层-051"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492823" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:244px;left:526px;" data-original-title="负一层-052"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492824" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:265px;left:474px;" data-original-title="负一层-053"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492825" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:265px;left:526px;" data-original-title="负一层-054"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492826" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:291px;left:474px;" data-original-title="负一层-055"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492827" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:291px;left:526px;" data-original-title="负一层-056"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492828" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:311px;left:474px;" data-original-title="负一层-057"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492829" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:311px;left:526px;" data-original-title="负一层-058"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-doing" key="100492830" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:338px;left:474px;" data-original-title="负一层-059(空:0时5分)"><div class="fp-dot-layer fp-layer-0"></div><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>
+            <div class="fp-dot fp-dot-ok" key="100492831" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:338px;left:526px;" data-original-title="负一层-060"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"></div></div>*@
+                @*<div class="fp-dot fp-dot-ok" key="100492832" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:358px;left:474px;" data-original-title="负一层-061"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-061</span></div></div><div class="fp-dot fp-dot-ok" key="100492833" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:358px;left:526px;" data-original-title="负一层-062"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-062</span></div></div><div class="fp-dot fp-dot-ok" key="100492834" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:385px;left:474px;" data-original-title="负一层-063"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-063</span></div></div><div class="fp-dot fp-dot-ok" key="100492835" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:385px;left:526px;" data-original-title="负一层-064"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-064</span></div></div><div class="fp-dot fp-dot-ok" key="100492836" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:406px;left:474px;" data-original-title="负一层-065"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-065</span></div></div><div class="fp-dot fp-dot-ok" key="100492837" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:406px;left:526px;" data-original-title="负一层-066"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-066</span></div></div><div class="fp-dot fp-dot-ok" key="100492838" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:433px;left:474px;" data-original-title="负一层-067"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-067</span></div></div><div class="fp-dot fp-dot-ok" key="100492839" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:433px;left:526px;" data-original-title="负一层-068"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-068</span></div></div><div class="fp-dot fp-dot-ok" key="100492840" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:453px;left:474px;" data-original-title="负一层-069"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-069</span></div></div><div class="fp-dot fp-dot-ok" key="100492841" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:453px;left:526px;" data-original-title="负一层-070"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-070</span></div></div><div class="fp-dot fp-dot-ok" key="100492842" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:479px;left:474px;" data-original-title="负一层-071"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-071</span></div></div><div class="fp-dot fp-dot-ok" key="100492843" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:479px;left:526px;" data-original-title="负一层-072"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-072</span></div></div><div class="fp-dot fp-dot-ok" key="100492844" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:168px;left:630px;" data-original-title="负一层-073"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-073</span></div></div><div class="fp-dot fp-dot-ok" key="100492845" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:168px;left:668px;" data-original-title="负一层-074"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-074</span></div></div><div class="fp-dot fp-dot-ok" key="100492846" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:198px;left:630px;" data-original-title="负一层-075"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-075</span></div></div><div class="fp-dot fp-dot-ok" key="100492847" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:198px;left:668px;" data-original-title="负一层-076"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-076</span></div></div><div class="fp-dot fp-dot-ok" key="100492848" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:216px;left:630px;" data-original-title="负一层-077"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-077</span></div></div><div class="fp-dot fp-dot-ok" key="100492849" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:216px;left:668px;" data-original-title="负一层-078"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-078</span></div></div><div class="fp-dot fp-dot-ok" key="100492850" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:245px;left:630px;" data-original-title="负一层-079"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-079</span></div></div><div class="fp-dot fp-dot-doing" key="100492851" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:245px;left:668px;" data-original-title="负一层-080(空:4时0分)"><div class="fp-dot-layer fp-layer-0"></div><div class="fp-dot-layer fp-layer-1"></div><div class="fp-dot-layer fp-layer-2"></div><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-080(空:4时0分)</span></div></div><div class="fp-dot fp-dot-ok" key="100492852" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:263px;left:630px;" data-original-title="负一层-081"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-081</span></div></div><div class="fp-dot fp-dot-ok" key="100492853" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:263px;left:668px;" data-original-title="负一层-082"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-082</span></div></div><div class="fp-dot fp-dot-ok" key="100492854" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:293px;left:630px;" data-original-title="负一层-083"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-083</span></div></div><div class="fp-dot fp-dot-ok" key="100492855" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:293px;left:668px;" data-original-title="负一层-084"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-084</span></div></div><div class="fp-dot fp-dot-ok" key="100492856" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:168px;left:698px;" data-original-title="负一层-085"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-085</span></div></div><div class="fp-dot fp-dot-ok" key="100492857" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:168px;left:735px;" data-original-title="负一层-086"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-086</span></div></div><div class="fp-dot fp-dot-ok" key="100492858" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:198px;left:698px;" data-original-title="负一层-087"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-087</span></div></div><div class="fp-dot fp-dot-ok" key="100492859" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:198px;left:735px;" data-original-title="负一层-088"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-088</span></div></div><div class="fp-dot fp-dot-ok" key="100492860" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:216px;left:698px;" data-original-title="负一层-089"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-089</span></div></div><div class="fp-dot fp-dot-ok" key="100492861" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:216px;left:735px;" data-original-title="负一层-090"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-090</span></div></div><div class="fp-dot fp-dot-ok" key="100492862" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:245px;left:698px;" data-original-title="负一层-091"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-091</span></div></div><div class="fp-dot fp-dot-ok" key="100492863" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:245px;left:735px;" data-original-title="负一层-092"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-092</span></div></div><div class="fp-dot fp-dot-ok" key="100492864" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:263px;left:698px;" data-original-title="负一层-093"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-093</span></div></div><div class="fp-dot fp-dot-ok" key="100492865" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:263px;left:735px;" data-original-title="负一层-094"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-094</span></div></div><div class="fp-dot fp-dot-ok" key="100492866" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:293px;left:698px;" data-original-title="负一层-095"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-095</span></div></div><div class="fp-dot fp-dot-ok" key="100492867" title="" style="position:absolute;width:14px;height:14px;line-height:14px;top:293px;left:735px;" data-original-title="负一层-096"><div class="fp-obj-title" style="position: absolute;text-align:center;top:17px;left:-36px;width: 86px;line-height: 12px;font-size: 12px;"><span>负一层-096</span></div></div><*@
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        $(function () {
+            $(".btnDelete").click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.modal.confirm('删除后将不可恢复，您确定要删除此用户？', function () {
+                    $.get(url, function (data) {
+                        $.modal.alert(data.Message);
+                    });
+                });
+            });
+        });
+
+
+    </script>
+    <script>
+            $(function () {
+                $(".fp-dot-ok").click(function (e) {
+                    e.preventDefault();
+
+                    if (@hasUser) {
+                        @*//var muserId = "@workContext.CurrentUser.Id";*@
+                        var mseatId = $(this).attr('key');
+                        var seatNumber = $(this).attr('key');
+                        var url = "@Url.RouteUrl("SeatSchedule")"
+                        $.modal.confirm('是否预定座位:' + seatNumber, function () {
+                            $.post(url, { "seatnumber": seatNumber }, function (data) {
+                                $.modal.alert(data);
+                                if (data.Status) {
+                                     window.location.href = "@Url.RouteUrl("userInfoIndex")";
+                                }
+                            });
+                        });
+                    }
+                    else {
+                        window.location.href = "@Url.RouteUrl("publicLogin")";
+                    }
+                });
+
+                $(".fp-dot-busy").click(function (e) {
+                    e.preventDefault();
+                    
+                        seatNumber = $(this).attr('key');
+                        var url = "@Url.RouteUrl("seatDetail")"
+                        $.post(url, { "seatnumber": seatNumber }, function (data,status) {
+                            $.modal.alert(data);
+                        });
+                    
+                    
+                });
+
+                $(".fp-dot-seat").click(function (e) {
+                    e.preventDefault();
+                    
+                        seatNumber = $(this).attr('key');
+                        var url = "@Url.RouteUrl("seatDetail")"
+                        $.post(url, { "seatnumber": seatNumber }, function (data) {
+                            $.modal.alert(data);
+                        });
+                    
+                    
+                });
+
+
+
+                 $("[data-toggle='tooltip']").tooltip();
+
+
+            });
+    </script>
+</div>

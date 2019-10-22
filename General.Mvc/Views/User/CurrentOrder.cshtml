@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "CurrentOrder";
+    Layout = "_UserLayout";
+     General.Entities.OrderDetail curOrder = ViewBag.CurrentOrder;
+    General.Entities.LibrarySeat seat = ViewBag.OrderSeat;
+}
+
+    <div class="main-content">
+        <div class="row">
+            <h1>
+                当前订单
+            </h1>
+        </div>
+
+        @if (curOrder != null)
+        {
+            <div class="row left">
+ 
+                <div class="col-sm-6">
+                    <label >订单编号:</label>
+                    <label >@curOrder.Id.ToString().Remove(20)</label>
+                </div>
+                <div class="col-sm-6">
+                    <label >座位号码:</label>
+                    <label>@seat.SeatNumber</label>
+                </div>
+
+            </div>
+
+            <div class="row left">
+               
+                <div class="col-sm-6">
+                    <label >订单开始时间:</label>
+                    <label>@curOrder.CreateTime.ToString("MM-dd HH:mm")</label>
+                </div>
+                <div  class="col-sm-6">
+                    <label >订单结束时间:</label>
+                    <label >@curOrder.EndTime.ToString("MM-dd HH:mm")</label>
+                </div>
+ 
+            </div>
+
+            <div class="space-14"></div>
+            <div class="row center">
+                <div>
+                    <label> 验证码:</label>
+                    <label>@curOrder.VerificationCode</label>
+                </div>
+                @if (!curOrder.HasCheckIn)
+                {
+                    <div>
+                        <h3 class="text-danger"> 你还未打卡！请前往图书馆打卡！</h3>
+                    </div>
+                }
+            </div>
+
+            <div class="row center">
+                <input type="button" class="reOrder" accesskey="" value="续订"/>
+            </div>
+        }
+        else
+        {
+            <div>
+                <h3 class="text-info"> 你单前没有预定座位哦！</h3>
+            </div>
+        }
+
+    </div>、
+
+<script>
+    $(function () {
+        $(".reOrder").click(function (e) {
+            e.preventDefault();
+            var url = '@Url.RouteUrl("reOrder")';
+            $.post(url, { "orderId":"@curOrder.Id"}, function (data) {
+                $.modal.alert(data);
+                //location.reload();
+            });
+        })
+
+    });
+
+
+</script>
+

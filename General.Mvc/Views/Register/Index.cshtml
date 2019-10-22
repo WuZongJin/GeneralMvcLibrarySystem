@@ -1,0 +1,214 @@
+﻿@{
+    Layout = null;
+}
+@model General.Entities.SysUser
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <title>用户注册 - 系统管理</title>
+    <meta name="description" content="User Register page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/assets/css/ace.min.css" rel="stylesheet" />
+    <script src="~/assets/js/jquery.min.js"></script>
+</head>
+<body class="login-layout blur-login">
+    <div class="main-container">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="login-container">
+                        <div class="center">
+                            <h1>
+                                <i class="ace-icon green"></i>
+                                <span class="white" id="id-text2"></span>
+                            </h1>
+                            <h4 class="blue" id="id-company-text">&copy; </h4>
+                        </div>
+
+                        <div class="space-6"></div>
+
+                        <div class="position-relative">
+                            <div id="register-box" class="login-box visible widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header blue lighter bigger">
+                                            <i class="ace-icon fa fa-coffee green"></i>
+                                            请输入注册信息
+                                        </h4>
+
+                                        <div class="space-6"></div>
+                                        <form id="registForm" asp-route="publicRegister" method="post">
+    
+                                                <div class="form-group">
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="text" class="form-control" asp-for="Account" autocomplete="off" placeholder="用户账号" />
+                                                            <i class="ace-icon fa fa-user"></i>
+                                                            <span class="inline text-danger" asp-validation-for="Account"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="text" class="form-control" asp-for="Name" autocomplete="off" placeholder="用户名" />
+                                                            <i class="ace-icon fa fa-user"></i>
+                                                            <span class="inline text-danger" asp-validation-for="Name"></span>
+                                                        </span>
+                                                    </label>
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="password" class="form-control"  asp-for="Password" placeholder="密码" />
+                                                            <i class="ace-icon fa fa-lock"></i>
+                                                        </span>
+                                                    </label>
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="password" class="form-control" id="RePassword" autocomplete="off" placeholder="再次输入密码" />
+                                                            <i class="ace-icon fa fa-lock"></i>
+                                                            <span id="rePasswordError" class="inline text-danger"></span>
+                                                        </span>
+                                                    </label>
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="email" class="form-control" asp-for="Email" placeholder="邮箱" />
+                                                            <i class="ace-icon fa-envelope"></i>
+                                                            <span class="inline text-danger" asp-validation-for="Email"></span>
+                                                        </span>
+                                                    </label>
+                                                    <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="text" class="form-control" asp-for="MobilePhone" placeholder="手机号码" />
+                                                            <i class="ace-icon fa fa-phone"></i>
+                                                            <span class="inline text-danger" asp-validation-for="MobilePhone"></span>
+                                                        </span>
+                                                    </label>
+
+                                                    <div class="space"></div>
+
+                                                    <div class="clearfix">
+
+                                                        <button type="button" id="myButton" data-loading-text="注册中..." class="width-35 pull-right btn btn-sm btn-primary">
+                                                            <i class="ace-icon fa fa-key"></i>
+                                                            <span class="bigger-110">注册</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="space-4"></div>
+
+                                           
+
+                                        </form>
+                                        <div class="social-or-login center">
+                                            <span class="bigger-110">注 册 提 示</span>
+                                        </div>
+                                        <div class="social-login">
+                                            <p id="error_msg"></p>
+                                        </div>
+                                        <div class="space-6"></div>
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/jquery.md5.js"></script>
+    <script>
+        //$().ready(function () {
+        //    $("#registForm").validate({
+        //        rules: {
+        //            Password: {
+        //                required: true,
+				    //    minlength: 6
+        //            },
+        //            RePassword: {
+        //                equalTo: '#Password'
+        //            },
+        //        },
+        //        messages: {
+			     //   Password: {
+				    //    required: "请输入密码",
+				    //    minlength: "密码不能小于6个字 符"
+			     //   },
+			     //   RePassword: {
+				    //    equalTo: "两次密码不一样"
+			     //   },
+			       
+		      //  }
+
+        //    });
+
+        //});
+
+
+
+        $(function () {
+            $('#myButton').click(function () {
+                if ($('form').valid()) {
+                    var account = $('#Account').val();
+                    var name = $('#Name').val();
+                    var password = $('#Password').val();
+                    var email = $('#Email').val();
+                    var phone = $('#MobilePhone').val();
+                    if ($("#RePassword").val() != $("#Password").val()) {
+
+                        alert("两次密码不一致");
+                        return;
+                    }
+
+                    $.post('@Url.RouteUrl("publicRegister")',
+                        {
+                            "Account": account,
+                            "Password": password,
+                            "Name": name,
+                            "Email": email,
+                            "MobilePhone": phone,
+                        }, function (data) {
+                        if (data.status) {
+                            $('#error_msg').html('注册成功');
+                             window.location.href = '@Url.RouteUrl("publicLogin")';
+                        } else {
+                            $('#error_msg').html(data.message);
+                        }
+
+                    });
+                }
+            });
+
+            $("#RePassword").blur(function () {
+                if ($("#RePassword").val() != $("#Password").val()) {
+
+                    $("#rePasswordError").text("两次密码不一致");
+
+                }
+                else {
+                    $("#rePasswordError").text("");
+                }
+            });
+
+        });
+
+
+    </script>
+</body>
+</html>
+
+
+

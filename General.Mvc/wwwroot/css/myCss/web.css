@@ -1,0 +1,249 @@
+@CHARSET "UTF-8";
+html,body{
+	background: #010101;
+}
+.floor,.floor-area{
+	margin: 0 auto;
+	width:1366px;
+	height:768px;
+	background: #010101;
+	position: relative;
+}
+.floor-area ul li{
+	position: absolute;
+	cursor: pointer;
+}
+.dir-l{-webkit-transform: rotate(-90deg);}
+.dir-r{-webkit-transform: rotate(90deg);}
+.dir-t{-webkit-transform: rotate(0deg);}
+.dir-b{-webkit-transform: rotate(180deg);}
+/*时间段tab*/
+.time-buckets{
+	width:605px;
+}
+.time-tab-list{
+	white-space: nowrap;
+	height: 56px;
+	text-align: center;
+}
+.time-tab-list .time-tab{
+	display: inline-block;
+	height: 45px;
+	background: #64ba00;
+	border-radius: 5px 5px 0 0;
+	padding: 5px 5px 0px 5px;
+	margin: 0 5px;
+	width: 65px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+	vertical-align: bottom;
+	line-height: 20px;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+
+.time-tab-list .time-tab-on, .time-tab-list .time-tab:hover{
+	background: #e51518;
+	height: 52px;
+	color: #fff;
+	line-height: 23px;
+}
+
+.time-tab-content{
+	background: #fff;
+	border: 2px solid #888;
+	overflow-y: auto;
+ 	padding: 30px;
+ 	border-radius: 5px;
+}
+#time-tab-content{
+
+}
+.time-tab-content .time-buckets-radio {
+	background: #ccc;
+	display: inline-block;
+	padding: 10px 10px;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 5px 9px;  
+	border-radius: 5px;
+	cursor: pointer;
+}
+.time-tab-content .radio-checked{
+	background: #64ba00;
+}
+.time-tab-content .no-time-segment{
+	color:#f00;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+.time-tab-button-left{
+	position:absolute;
+	top:20px;
+	left:-30px;
+	font-family:"微软雅黑";
+	background-color:#64ba00;
+	color:white;
+	font-weight: bold;
+	border-radius:5px;
+	cursor: pointer;
+}
+.time-tab-button-right{
+	position:absolute;
+	top:20px;
+	right:-30px;
+	font-family:"微软雅黑";
+	background-color:#64ba00;
+	color:white;
+	font-weight: bold;
+	border-radius:5px;
+	cursor: pointer;
+}
+/*倒计时*/
+.timer-container{
+	font: normal 25px "微软雅黑";
+    color: #ee3106;
+	font-weight: bold;
+	padding-left: 30px;
+}
+/*用户登录与预约时间切换按钮*/
+
+.user-panel{
+	display: inline-block;
+	opacity: 0.8;
+	-webkit-filter: opacity(80);
+	-o-filter: opacity(80);
+	filter: opacity(80);
+	height: 35px;
+	line-height: 35px;
+	position: fixed;
+	left: 50px;
+	top: 10px;
+	z-index: 100;
+	background: #227db2;
+	padding: 0 20px;
+	border-radius: 8px;
+	color: #fff;
+	font-weight: bold;
+}
+.user-panel a{
+	color: #fff;
+
+}
+.user-panel .seprator {
+	padding: 0 5px;
+}
+.user-panel .time-segment-change{
+ 
+}
+.user-panel .logout-control{
+	display: none;
+}
+/*登录表单*/
+.login_form{
+	padding: 20px 30px;
+	background: #fff;
+	font: 16px/32px "微软雅黑";
+	color: #777;
+	font-weight: bold;
+}
+.login_form div{padding: 5px 0px;}
+.login_form span{
+	display: inline-block;
+	width: 60px;
+}
+.login_form input{
+	width: 150px;
+ 	padding: 6px 10px; 
+	border: 2px solid #ddd;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	
+}
+/*非独占型空间预约表单*/
+.spacebook_form{
+	padding: 10px 20px;
+	background: #fff;
+	font: 16px/32px "微软雅黑";
+	color: #777;
+	font-weight: bold;
+}
+ 
+.spacebook_form span{
+	display: block;
+	width: 100px;
+}
+.spacebook_form input,.spacebook_form textarea{
+	width: 300px;
+ 	padding: 6px 10px; 
+	border: 2px solid #ddd;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	vertical-align: top;
+}
+.spacebook_form textarea{height: 50px;}
+.spacebook_form .spacebook_application{height: 100px;}
+.spacebook_form #book_member{background: #64ba00;height:35px;line-height: 35px;}
+.spacebook_form #book_member input{width:150px;}
+.spacebook_form #book_member a{display: inline-block; width: 122px;padding-left:28px;color: #fff;}
+.spacebook_form #book_member_list{ }
+.spacebook_form #book_member_list ul{width:324px;}
+.spacebook_form #book_member_list li{
+	width: 104px;
+	height: 30px;
+	line-height: 30px;
+	color: #333;
+	font-size: 14px;
+	float: left;
+	border: 1px solid #64ba00;
+	margin-top:3px; 
+	margin-right:2px; 
+}
+.spacebook_form #book_member_list li i{display: block;font-style: normal;text-align: center;}
+.spacebook_form #book_member_list li i.mem-del{
+	width: 20px;
+	float: right;
+	background: #64ba00;
+	font-weight: bold;
+	color: #000;
+	text-shadow: 0 1px 0 #FFF;
+	opacity: .8;
+	filter: alpha(opacity=80);
+	cursor:pointer;
+}
+.spacebook_form #book_member_list li i.mem-name{
+	float: left;
+	width: 80px
+
+}
+.spacebook_form .book_file{
+  
+ 
+}
+ 
+ 
+.spacebook_form .btns{
+	height: 35px;
+	line-height: 35px;
+}
+.spacebook_form #uploader-img{}
+.spacebook_form .webuploader-pick{
+	width:324px;
+	height:35px;
+	line-height: 35px;
+	background: #64ba00;
+	padding: 0px;
+	font-size: 14px;
+}
+/*预约信息提示*/
+.bookTipInfo{
+	color: #333;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	font-weight: bold;
+}
+.bookTipInfo p{line-height: 30px;}
+ 

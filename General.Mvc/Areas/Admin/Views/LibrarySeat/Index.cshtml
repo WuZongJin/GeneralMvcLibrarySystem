@@ -1,0 +1,112 @@
+﻿@using  General.Framework.Datatable
+@using General.Entities
+@model DataSourceResult<LibrarySeat,LibrarySeatSearchArgs>
+@{
+    ViewData["Title"] = "图书馆座位列表";
+    bool canAddOrUpdate = Html.OwnPermission("editLibrarySeat");
+    bool canDelete = Html.OwnPermission("deleteLibrarySeat");
+}
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="@Url.RouteUrl("mainIndex")">首页</a>
+        </li>
+        <li class="active">系统用户</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            @ViewData["Title"]
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            @if (canAddOrUpdate)
+            {
+                <a asp-route="editLibrarySeat" class="btn btn-sm btn-pink"><i class="glyphicon glyphicon-plus"></i>添加图书馆座位</a>
+            }
+        </div>
+    </div>
+    <div class="space-2"></div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form asp-route="librarySeatIndex" method="get" class="form-inline">
+                        <label>关键字</label>
+                        <input type="text" class="form-control" name="q" style="width:220px;" value="@Model.Paging.RouteArg.q" placeholder="座位号码" />
+                        <button type="submit" class="btn btn-purple btn-sm">
+                            查询
+                            <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Model != null)
+    {
+        int i = 1;
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="libraryseat_datatable" class="table table-striped table-hover dataTableno-footer">
+                    <thead>
+                        <tr>
+                            <th width="100px"></th>
+                            <th width="300px">座位编号</th>
+                            <th width="300px">楼层</th>
+                            <th width="300px">座位状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Data)
+                        {
+                            <tr>
+                                <td>@(i++)</td>
+                                <td>
+                                    <form asp-route="OrderDetailIndex" method="get" class="form-inline">
+                                        <input type="hidden" name="q" style="width:220px;" value="@item.SeatNumber" />
+                                        <button type="submit" class="btn btn-xs btn-info ">
+                                           @item.SeatNumber
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>@item.Floor</td>
+                                @switch (@item.SeatState)
+                                {
+                                    case LibrarySeat.SeatStates.Available:
+                                        <td>可用</td>
+                                        break;
+                                    case LibrarySeat.SeatStates.Booked:
+                                        <td>已预定</td>
+                                        break;
+                                    case LibrarySeat.SeatStates.InAvailable:
+                                        <td>已被坐</td>
+                                        break;
+                                }
+                                <td>
+                                    @if (canAddOrUpdate)
+                                    {
+                                        <a href="@Url.RouteUrl("editLibrarySeat", new { id = item.Id })" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-trash"></i>修改</a>
+                                    }
+                                    @if (canDelete)
+                                    {
+                                        <a href="@Url.RouteUrl("deleteLibrarySeat", new { id = item.Id })" class="btn btn-xs btn-danger btnDelete"><i class="glyphicon glyphicon-trash"></i>删除</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <pager page-value="Model.Paging"></pager>
+            </div>
+        </div>
+    }
+</div>
+

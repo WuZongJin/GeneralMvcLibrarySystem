@@ -1,0 +1,83 @@
+﻿@using General.Entities
+@model LibrarySeat
+@{
+    ViewData["Title"] = "编辑图书馆座位";
+}
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="@Url.RouteUrl("mainIndex")">首页</a>
+        </li>
+        <li><a href="@ViewBag.ReturnUrl">系统用户列表</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            @ViewData["Title"]
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-route="editLibrarySeat" method="post" class="form-horizontal">
+                @Html.HiddenFor(m => m.Id)
+                <div asp-validation-summary="All"></div>
+                @if (Model == null || Model.Id == Guid.Empty)
+                {
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label no-padding-right">座位编号</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" asp-for="SeatNumber" placeholder="座位编号" />
+                        </div>
+                        <span class="inline text-danger" asp-validation-for="SeatNumber"></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label no-padding-right">@Html.RequiredSpan()座位编号</label>
+                        <div class="col-sm-9">
+                            @Html.HiddenFor(m => m.SeatNumber)
+                            <b>@Model.SeatNumber</b>
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">@Html.RequiredSpan()楼层</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" asp-for="Floor" placeholder="楼层" />
+                    </div>
+                    <span class="inline text-danger" asp-validation-for="Floor"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right">@Html.RequiredSpan()座位状态@Html.RequiredSpan()</label>
+                    <div class="radio">
+                        <label>
+                            @Html.RadioButtonFor(m => m.SeatState, 0)
+                            <span class="lbl">可用</span>
+                        </label>
+                        <label>
+                            @Html.RadioButtonFor(m => m.SeatState, 1)
+                            <span class="lbl">被预定</span>
+                        </label>
+                        <label>
+                            @Html.RadioButtonFor(m => m.SeatState, 2)
+                            <span class="lbl">不可用</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-offset-2 col-md-9">
+                    <button class="btn btn-info" type="submit">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        提交
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

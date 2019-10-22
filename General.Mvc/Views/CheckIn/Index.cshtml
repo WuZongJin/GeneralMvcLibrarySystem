@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "打卡";
+    
+}
+
+
+    <div class="main-container">
+        <div class="content">
+            <div class="row center">
+                <label>账号:</label>
+                <input type="text" class="account" />
+
+            </div>
+            <div class="row center">
+                <label>验证码:</label>
+                <input type="text" class="code" />
+
+            </div>
+            <div class="row center">
+                <input type="button" class="btn" value="打卡" />
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <script>
+        $(function () {
+            $(".btn").click(function (e) {
+                e.preventDefault();
+                var account = $('.account').val();
+                var code = $('.code').val();
+                var url = '@Url.RouteUrl("Checkin")';
+                $.post(url, { "account": account, "code": code }, function (data) {
+                    $.modal.alert(data);
+                });
+
+
+            });
+
+
+        });
+
+    </script>
+

@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewData["Title"] = "个人中心";
+    Layout = "_UserLayout";
+    General.Entities.OrderDetail curOrder = ViewBag.CurrentOrder;
+    General.Entities.LibrarySeat seat = ViewBag.OrderSeat;
+    var userName = Model.Account.Trim();
+}
+@model  General.Entities.SysUser
+
+    <div class="main-content">
+        <div class="row ">
+            <h1>个人信息</h1>
+        </div>
+
+        <form asp-route="" method="post">
+            <div class="row">
+
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-3">
+                    <label class="label">账号:</label>
+                    <input type="text" class="form-control" asp-for="Account" value="@userName" />
+                    <span class="inline text-danger" asp-validation-for="Account"></span>
+                </div>
+                <div class="col-sm-3">
+                    <label class="label">名字:</label>
+                    <input type="text" class="form-control" asp-for="Name" value="@Model.Name" />
+                    <span class="inline text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="col-sm-3">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-3">
+                    <label class="label">手机号码:</label>
+                    <Label class="form-control">@Model.MobilePhone</Label>
+
+                </div>
+                <div class="col-sm-3">
+                    <label class="label">邮箱:</label>
+                    <label class="form-control">@Model.Email</label>
+                </div>
+                <div class="col-sm-3">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-3">
+                    <label class="label">最后登录时间:</label>
+                    <Label class="form-control">@Model.LastLoginTime</Label>
+
+                </div>
+                <div class="col-sm-3">
+                    <label class="label">违约次数:</label>
+                    <label class="form-control">@Model.ViolationNum</label>
+                </div>
+                <div class="col-sm-3">
+                </div>
+            </div>
+
+
+            @*@if (curOrder != null)
+        {
+            <div class="row">
+                <div class="col-sm-12">
+                    当前订单
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <label class="label-default">座位号：@seat.SeatNumber</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="label-default">座位楼层：@seat.Floor</label>
+                </div>
+                <div class="col-sm-3">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <label class="label-default">是否打卡：@curOrder.HasCheckIn</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="label-default">验证码：@curOrder.VerificationCode</label>
+                </div>
+                <div class="col-sm-3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <label class="label-default">开始时间：@curOrder.CreateTime</label>
+                </div>
+                <div class="col-sm-3">
+                    <label class="label-default">结束时间：@curOrder.EndTime</label>
+                </div>
+                <div class="col-sm-3">
+                </div>
+            </div>
+        }*@
+        </form>
+    </div>
+
+

@@ -1,0 +1,28 @@
+body{
+	background:url(../../images/b1.jpeg);
+	background-size: cover;
+	
+}
+.w{
+	width: 970px;
+	margin: auto;
+}
+.header{
+	padding-top:27px;
+}
+.nav{
+	float: right;
+}
+.nav li{
+	float: left;
+	padding: 0 8px;
+}
+.nav a{
+	font:bold 34px georgia;
+	color: #000000;
+	text-decoration: none;
+}
+.nav p{
+	color: #000000;
+	font: 17px tahoma;
+}

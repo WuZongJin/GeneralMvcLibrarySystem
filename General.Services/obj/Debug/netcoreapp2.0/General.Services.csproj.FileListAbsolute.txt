@@ -1,0 +1,14 @@
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\bin\Debug\netcoreapp2.0\General.Services.deps.json
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\bin\Debug\netcoreapp2.0\General.Services.dll
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\bin\Debug\netcoreapp2.0\General.Services.pdb
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\bin\Debug\netcoreapp2.0\General.Core.dll
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\bin\Debug\netcoreapp2.0\General.Entities.dll
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\bin\Debug\netcoreapp2.0\General.Core.pdb
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\bin\Debug\netcoreapp2.0\General.Entities.pdb
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\obj\Debug\netcoreapp2.0\General.Services.csprojAssemblyReference.cache
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\obj\Debug\netcoreapp2.0\General.Services.csproj.CoreCompileInputs.cache
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\obj\Debug\netcoreapp2.0\General.Services.AssemblyInfoInputs.cache
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\obj\Debug\netcoreapp2.0\General.Services.AssemblyInfo.cs
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\obj\Debug\netcoreapp2.0\General.Services.csproj.CopyComplete
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\obj\Debug\netcoreapp2.0\General.Services.dll
+C:\Users\dps\Desktop\General.Mvc\General.Mvc\General.Services\obj\Debug\netcoreapp2.0\General.Services.pdb

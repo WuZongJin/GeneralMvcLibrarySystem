@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Html
+@using General.Framework.Menu
+@using General.Entities
+@{
+    var workContext = Html.GetWorkContext();
+}
+
+
+<div class="navbar-buttons navbar-header pull-right " role="navigation">
+    <ul class="nav ace-nav">
+        @if (workContext.CurrentUser != null)
+        {
+            <li class="light-blue">
+                <a data-toggle="dropdown" href="javascript:" class="dropdown-toggle">
+                    <img class="nav-user-photo" src="/assets/avatars/user.jpg" onerror="this.src = '/assets/avatars/user.jpg'" alt="" />
+                    <span class="user-info">
+                        <small>您好，</small> @(workContext.CurrentUser.Name)
+                    </span>
+                    <i class="ace-icon fa fa-caret-down"></i>
+                </a>
+                <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                    <li>
+                        <a href="@Url.RouteUrl("userInfoIndex")">
+                            <i class="ace-icon fa fa-user"></i>
+                            个人
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="@Url.RouteUrl("publicSignout")">
+                            <i class="ace-icon fa fa-power-off"></i>
+                            退出
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li class="light-blue">
+                <a href="@Url.RouteUrl("publicLogin")">登录</a>
+            </li>
+            
+            <li class="light-blue">
+                <a href="@Url.RouteUrl("publicRegisterIndex")">注册</a>
+            </li>
+        }
+    </ul>
+</div>

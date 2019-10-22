@@ -1,0 +1,50 @@
+.green-dialog .ui-dialog-header{
+	background: #64ba00;
+	border-radius: 5px 5px 0 0;
+}
+.green-dialog .ui-dialog-title{
+	color: #fff;
+	font: bold 15px "微软雅黑";
+}
+.green-dialog .ui-dialog-footer button+button {
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+.green-dialog .ui-dialog-footer button{
+	_margin_left:10px;
+	font-weight: bold;
+	font-family: "微软雅黑";
+}
+.green-dialog .ui-dialog-footer button.ui-dialog-autofocus{
+	background: #64ba00;
+	border-color: #64ba00;
+}
+
+.green-dialog .ui-dialog-loading {
+  width: 100px;
+  height: 100px;
+  background:url(../image/loading.gif);
+  font-size: 1px;
+  text-indent: -9999px;
+  margin: 0 auto;
+}
+
+/*扩展效果css*/
+/*警告信息*/
+.green-dialog .alert-dialog{
+	color: #333;
+	font: normal 20px "微软雅黑";
+	padding: 40px 20px 40px 72px;
+}
+.green-dialog .alert-dialog-warning{
+	background: url(../image/alert.gif) 0 center no-repeat;
+}
+.green-dialog .alert-dialog-error{
+	background: url(../image/face-sad.png) 0 center no-repeat;
+}
+.green-dialog .alert-dialog-question{
+	background: url(../image/prompt.gif) 0 center no-repeat;
+}
+.green-dialog .alert-dialog-success{
+	background: url(../image/face-smile.png) 0 center no-repeat;
+}

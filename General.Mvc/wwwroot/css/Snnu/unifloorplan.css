@@ -1,0 +1,243 @@
+﻿.fp-qzone {
+    border: 1px solid #ddd;
+    background: #eee;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.fp-header {
+    margin: 3px;
+    padding: 5px;
+    background: #46B8DA;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    color: #fff;
+}
+
+.fp-help {
+    float: right;
+}
+
+.fp-header select {
+    color: black;
+    height: 28px;
+    margin-right: 5px;
+}
+
+.fp-header a {
+    color: #eee;
+    margin-right: 5px;
+}
+
+    .fp-header a:hover {
+        color: #fff;
+    }
+
+.fp-grid-td {
+    border: solid #bbb;
+}
+
+.fp-dot-tip {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    margin-top: 3px;
+    margin: 0 3px;
+}
+
+.fp-box.fp-box-act {
+    opacity: .9;
+    background: #359308;
+}
+
+.fp-box.fp-box-sel {
+    background: red;
+}
+
+.fp-box {
+    border-radius: 50%;
+    border: 1px solid #f9f9f9;
+    background: green;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    color: #333;
+}
+
+    .fp-box .fp-box-drag {
+    }
+
+.fp-obj-title span {
+    color: #000;
+    background: #fff;
+    border: 1px solid #2677B6;
+    border-radius: 3px;
+    padding: 1px 2px;
+}
+
+.fp-hide-obj-title .fp-obj-title {
+    display: none;
+}
+
+.fp-cvt-mode {
+    float: right;
+}
+
+/*编辑模式*/
+.fp-edit .fp-grid-td {
+    cursor: pointer;
+}
+
+    .fp-edit .fp-grid-td:hover:not(.fp-td-sel) {
+        background: #31b0d5;
+        opacity: .4;
+    }
+
+.fp-edit-act {
+    margin-top: 5px;
+    padding-top: 3px;
+    border-top: 1px dashed #ccc;
+}
+
+.fp-area {
+    width: 40px;
+}
+
+.fp-change-area {
+    margin-left: 1px;
+    margin-right: 10px;
+}
+
+.fp-obj-do {
+    color: #31b0d5;
+}
+
+/*使用模式*/
+.fp-rsch {
+    margin-left: 5px;
+    width: 160px;
+}
+
+.fp-date-text {
+    font-weight: bold;
+    margin: 1px 3px 1px 1px;
+    padding: 6px 3px;
+    color: #fff;
+}
+/*.fp-time-start, .fp-time-end {width:50px;}#f3f3f3*/
+.fp-dot {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 12px;
+    color: #fff; /*box-shadow: 0 0 2px 1px #ccc;*/
+}
+
+.fp_content .fp-dot {
+    cursor: pointer;
+    opacity: .95;
+}
+
+    .fp_content .fp-dot:hover {
+        box-shadow: 0 0 2px 1px #ccc;
+        opacity: 1;
+    }
+
+.fp-dot-ing {
+    border: 1px solid red;
+    box-shadow: 0 0 2px 1px red;
+}
+
+.fp-dot-seat{
+    background: red;
+}
+
+.fp-dot-ok {
+    background: green;
+}
+
+.fp_content .fp-dot-ok:hover {
+    border-color: green;
+}
+
+.fp-dot-doing {
+    background: orange;
+}
+
+.fp_content .fp-dot-doing:hover {
+    border-color: #bbb;
+}
+
+.fp-dot-busy {
+    background: orange;
+}
+
+.fp_content .fp-dot-busy:hover {
+    border-color: orange;
+}
+
+.fp-dot-close {
+    background: #aaa;
+}
+
+.fp_content .fp-dot-close {
+    cursor: default;
+    opacity: 1;
+}
+
+.fp-user-search {
+    margin: 0 5px;
+}
+
+.fp-load-status {
+    display: inline-block;
+    width: 50px;
+    margin-left: 3px;
+}
+/*网格线*/
+.fp-guides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fp-guides-tbl {
+    width: 100%;
+    height: 100%;
+}
+
+table.fp-guides-tbl td {
+    border: none;
+}
+
+.fp-editing .fp-show-guides table.fp-guides-tbl td {
+    border: dotted 1px #000;
+}
+/*空闲百分比饼图*/
+.fp-dot-doing .fp-dot-layer {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: green;
+}
+
+    .fp-dot-doing .fp-dot-layer.fp-layer-0 {
+        top: 0;
+        left: 0;
+        border-top-left-radius: 100%;
+    }
+
+    .fp-dot-doing .fp-dot-layer.fp-layer-1 {
+        top: 50%;
+        left: 0;
+        border-bottom-left-radius: 100%;
+    }
+
+    .fp-dot-doing .fp-dot-layer.fp-layer-2 {
+        top: 50%;
+        left: 50%;
+        border-bottom-right-radius: 100%;
+    }
+/*.fp-dot-doing .fp-dot-layer.fp-layer-3 {top:0;left:50%;border-top-right-radius: 100%; }*/
